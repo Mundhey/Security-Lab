@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1501728904 source:c:\users\admin\desktop\security in computing\vigenère cipher\vigenère cipher\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

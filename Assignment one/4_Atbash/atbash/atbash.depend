@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1501928285 source:c:\users\admin\desktop\security in computing\atbash\atbash\main.c
+	<stdio.h>
+	<stdlib.h>
+

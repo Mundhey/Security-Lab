@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1501731313 source:c:\users\admin\desktop\security in computing\one time pad\one time pad\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

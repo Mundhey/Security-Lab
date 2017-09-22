@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1501926453 source:c:\users\admin\desktop\security in computing\rod 13\rodthirteen\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

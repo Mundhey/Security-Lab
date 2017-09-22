@@ -1,0 +1,95 @@
+\documentclass[11pt]{article}
+
+\begin{document}
+
+\title{Classical Cryptography Algorithms}
+\author{Rohan Mundhey}
+\date{\today}
+
+
+
+\section{Caesar Cipher}
+The Caesar cipher, also known as a shift cipher, is one of the simplest forms of encryption. It is a substitution cipher where each letter in the original message (called the plaintext) is replaced with a letter corresponding to a certain number of letters up or down in the alphabet.
+In this way, a message that initially was quite readable, ends up in a form that can not be understood at a simple glance.
+For example, here's the Caesar Cipher encryption of a message, using a right shift of 3.
+\\
+\\
+Plaintext:  
+THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG
+Ciphertext: 
+QEB NRFZH YOLTK CLU GRJMP LSBO QEB IXWV ALD
+\\
+\\
+As unreadable as the resulting ciphertext may appear, the Caesar Cipher is one of the weakest forms of encryption one can employ.
+\\
+The key space is very small. Using a brute force method, one could easily try all (25) possible combinations in order to decrypt the message without initially knowing the key.
+\\
+The structure of the original plaintext remains intact. This makes the encryption method vulnerable to frequency analysis - by looking at how often certain characters or sequences of characters appear, one can discover patterns and potentially discover the key without having to perform a full brute force search.
+\\
+The Caesar Cipher can be expressed in a more mathematical form as follows:
+$$E_n(x)=(x+n)mod26$$
+\\
+In plain terms, this means that the encryption of a letter x is equal to a shift of x + n, where n is the number of letters shifted. The result of the process is then taken under modulo division, essentially meaning that if a letter is shifted past the end of the alphabet, it wraps around to the beginning.
+\\
+\\
+Decryption of the encrypted text (ciphertext) would be defined similarly, with instead a subtraction of the shift amount.
+\\
+$$D_n(x)=(x-n)mod26$$
+\\
+First used by Julius Caesar, the Caesar Cipher is one of the more well known older historical encryption methods. While you certainly wouldn't want to use it in today's modern world, a long time ago it might have done the trick.
+\\
+\\
+
+
+
+
+\section{Vigenère Cipher}
+
+The Vigenère Cipher was developed by mathematician Blaise de Vigenère in the 16th century. The Vigenère Cipher was adapted as a twist on the standard Caesar cipher to reduce the effectiveness of performing frequency analysis on the ciphertext. The cipher accomplishes this using uses a text string (for example, a word) as a key, which is then used for doing a number of alphabet shifts on the plaintext. Similar to the Caesar Cipher, but instead of performing a single alphabet shift across the entire plaintext, the Vigenère cipher uses a key to determine several different shift amounts across the entirety of the message.
+\\
+\\
+Should the key be shorter than the plaintext, it is repeated until the length matches. In this way, each letter in the plaintext is shifted by the alphabet number of the corresponding letter in the key.
+\\
+\\
+Plaintext:  ATTACKATDAWN\\
+Key:        LEMONLEMONLE\\
+Ciphertext: LXFOPVEFRNHR
+\\
+\\
+Expressed mathematically, the encryption of the message at letter i, is equal to the alphabetic value of i in the plaintext plus the alphabetic value of the corresponding i in the key.
+$$E_k(M_i)=(M_i+K_i)mod26$$
+\\
+\\
+Decryption is the same process reversed, subtracting the key instead of adding to arrive back at the original, plaintext value.
+\\
+$$D_k(C_i)=(C_i-K_i)mod26$$
+\\
+The Vigenère cipher was an improvement upon previous historical encryption techniques, but is still vulnerable brute force attacks and frequency analysis, though to lesser degree than the Caesar Cipher.
+\\
+
+\section{One Time Pad}
+
+Towards the end of the 19th century, it was becoming fairly obvious that simple substitution ciphers that were vulnerable to frequency analysis were no longer secure. How could they transmit a message without it’s contents being vulnerable to inspection, while still being able to be decrypted once they reached their destination? The answer is randomness.
+\\
+\\
+Let’s consider a modified version of the Vigenère cipher as an example. Instead of performing alphabet shifts on each character in the plaintext via a key, we shift every character in the plaintext a random amount – with each of these random shift amounts becoming the resulting key. This results in a completely random key the exact same length as the original plaintext. This means that across the entire message, there can be no structure deduced from the frequency of characters, as the key itself was entirely randomly created. This type of encryption is called the one time pad, and the benefits don’t stop there.
+\\
+\\
+With each character now having it’s own individual and random shift amount, the keyspace grows exponentially for each character in the message. Let’s say we were to encrypt the name “Alice” with a one time pad. That’s 5 letters – so to brute force it you would have to try a whole lot of possibilities:
+\\
+\\
+$$(26x26x26x26x26) or 26^5 = 1188176$$
+\\
+\\
+However, this would simply brute force the search space. You still wouldn't know which of the millions of attempts you tried were correct, because (due to the randomness of the one time pad) it's possible that attempting to decrypt the message with an incorrect key, could potentially give a coherent but incorrect result. Because of this, while being a relatively simple encryption technique, the one time pad is considered unbreakable if used properly.
+\\
+\\
+There are however, downsides to the one time pad that should always be considered. The key size is always identical to the size of the message – which for long messages eventually becomes a lot of data to manage and a long encryption/decryption process. It also relies on a source of randomness, which can be exploited if not generated in a truly random fashion.
+\\
+\\
+\section{Playfair Cipher}
+
+\section{Four Square Cipher}
+
+
+\end{document}
